@@ -35,7 +35,6 @@ object Application {
         cmd match {
           case CommandPattern(clientName, msg) =>
             clients.get(clientName).foreach { clientRef =>
-              println(s"$clientName sending $msg")
               clientRef ! Client.SendMessage(msg)
             }
           case "exit" => 
