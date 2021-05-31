@@ -31,7 +31,7 @@ object Application {
 
       var running = true
       while(running) {
-        val cmd = readLine("> ")
+        val cmd = readLine("")
         cmd match {
           case CommandPattern(clientName, msg) =>
             clients.get(clientName).foreach { clientRef =>

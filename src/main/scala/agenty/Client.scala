@@ -57,6 +57,9 @@ object Client {
           case SendMessage(msg) =>
             serverRef ! Server.ProxyMessage(context.self, state.name, msg)
             Effect.persist(MessageSent(msg))
+          case Register(serverRef, name) =>
+            serverRef ! Server.RegisterClient(context.self)
+            Effect.persist(Registered(serverRef, name))
           case _ =>
             Effect.unhandled
         }
